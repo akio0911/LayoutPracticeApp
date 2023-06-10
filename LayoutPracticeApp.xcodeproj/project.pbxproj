@@ -14,6 +14,13 @@
 		D63E6D0F2A33FDF000CF201F /* LayoutPracticeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D0E2A33FDF000CF201F /* LayoutPracticeAppTests.swift */; };
 		D63E6D192A33FDF000CF201F /* LayoutPracticeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D182A33FDF000CF201F /* LayoutPracticeAppUITests.swift */; };
 		D63E6D1B2A33FDF000CF201F /* LayoutPracticeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D1A2A33FDF000CF201F /* LayoutPracticeAppUITestsLaunchTests.swift */; };
+		D63E6D282A34064F00CF201F /* ScreenNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D272A34064F00CF201F /* ScreenNames.swift */; };
+		D63E6D2A2A34077C00CF201F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D292A34077C00CF201F /* HomeView.swift */; };
+		D63E6D2E2A3407C100CF201F /* PreparationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D2D2A3407C100CF201F /* PreparationView.swift */; };
+		D63E6D302A3407D500CF201F /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D2F2A3407D500CF201F /* QuestionView.swift */; };
+		D63E6D322A3407E300CF201F /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D312A3407E300CF201F /* EndView.swift */; };
+		D63E6D372A3421AF00CF201F /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D362A3421AF00CF201F /* QuestionViewModel.swift */; };
+		D63E6D392A343E8A00CF201F /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E6D382A343E8A00CF201F /* CustomModifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		D63E6D142A33FDF000CF201F /* LayoutPracticeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LayoutPracticeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63E6D182A33FDF000CF201F /* LayoutPracticeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPracticeAppUITests.swift; sourceTree = "<group>"; };
 		D63E6D1A2A33FDF000CF201F /* LayoutPracticeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPracticeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D63E6D272A34064F00CF201F /* ScreenNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenNames.swift; sourceTree = "<group>"; };
+		D63E6D292A34077C00CF201F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D63E6D2D2A3407C100CF201F /* PreparationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationView.swift; sourceTree = "<group>"; };
+		D63E6D2F2A3407D500CF201F /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		D63E6D312A3407E300CF201F /* EndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndView.swift; sourceTree = "<group>"; };
+		D63E6D362A3421AF00CF201F /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
+		D63E6D382A343E8A00CF201F /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +109,10 @@
 			isa = PBXGroup;
 			children = (
 				D63E6CFD2A33FDEF00CF201F /* LayoutPracticeAppApp.swift */,
-				D63E6CFF2A33FDEF00CF201F /* ContentView.swift */,
 				D63E6D012A33FDF000CF201F /* Assets.xcassets */,
+				D63E6D332A34214700CF201F /* Model */,
+				D63E6D342A34214F00CF201F /* View */,
+				D63E6D352A34218E00CF201F /* ViewModel */,
 				D63E6D032A33FDF000CF201F /* Preview Content */,
 			);
 			path = LayoutPracticeApp;
@@ -125,6 +141,35 @@
 				D63E6D1A2A33FDF000CF201F /* LayoutPracticeAppUITestsLaunchTests.swift */,
 			);
 			path = LayoutPracticeAppUITests;
+			sourceTree = "<group>";
+		};
+		D63E6D332A34214700CF201F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D63E6D272A34064F00CF201F /* ScreenNames.swift */,
+				D63E6D382A343E8A00CF201F /* CustomModifiers.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D63E6D342A34214F00CF201F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D63E6CFF2A33FDEF00CF201F /* ContentView.swift */,
+				D63E6D292A34077C00CF201F /* HomeView.swift */,
+				D63E6D2D2A3407C100CF201F /* PreparationView.swift */,
+				D63E6D2F2A3407D500CF201F /* QuestionView.swift */,
+				D63E6D312A3407E300CF201F /* EndView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D63E6D352A34218E00CF201F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D63E6D362A3421AF00CF201F /* QuestionViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +302,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D63E6D2E2A3407C100CF201F /* PreparationView.swift in Sources */,
+				D63E6D282A34064F00CF201F /* ScreenNames.swift in Sources */,
+				D63E6D322A3407E300CF201F /* EndView.swift in Sources */,
+				D63E6D2A2A34077C00CF201F /* HomeView.swift in Sources */,
+				D63E6D302A3407D500CF201F /* QuestionView.swift in Sources */,
 				D63E6D002A33FDEF00CF201F /* ContentView.swift in Sources */,
+				D63E6D392A343E8A00CF201F /* CustomModifiers.swift in Sources */,
+				D63E6D372A3421AF00CF201F /* QuestionViewModel.swift in Sources */,
 				D63E6CFE2A33FDEF00CF201F /* LayoutPracticeAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

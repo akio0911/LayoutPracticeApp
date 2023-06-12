@@ -16,16 +16,16 @@ struct HomeView: View {
         GeometryReader { geometry in
             VStack (alignment: .center, spacing: screenHeight * 0.6) {
                 Text("準備ができましたら、\n\"Start Test\"をタップしてください。")
-                    .font(.largeTitle)
+                    .modifier(TitleFontModifier())
                 Button {
                     path.append(ScreenNames.preparation)
                 } label: {
                     Text("Start Test")
-                        .font(.largeTitle)
                         .modifier(
                             StartButtonModifier(
                                 screenWidth: screenWidth,
-                                screenHeight: screenHeight))
+                                screenHeight: screenHeight)
+                        )
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -35,6 +35,7 @@ struct HomeView: View {
 
 private struct Preview: View {
     @State var path = [ScreenNames.home]
+    // TODO: GeometryReaderでスクリーンの大きさを使用したい。
     @State var screenWidth: CGFloat = 800
     @State var screenHeight: CGFloat = 1000
 

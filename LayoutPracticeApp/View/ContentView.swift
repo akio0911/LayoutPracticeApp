@@ -18,23 +18,27 @@ struct ContentView: View {
         GeometryReader { geometry in
             NavigationStack(path: $path) {
                 VStack(alignment: .center, spacing: screenHeight * 0.2) {
-                    Text("Simple Math Test App")
-                        .font(.title)
+                    Text("数学力診断アプリ")
+                        .modifier(TitleFontModifier())
                     HStack(spacing: 0) {
-                        VStack(alignment: .leading, spacing: screenHeight * 0.06) {
+                        VStack(alignment: .leading, spacing: screenHeight * 0.04) {
                             Text("Login ID")
+                                .modifier(MainFontModifier())
                                 .frame(width: screenWidth * 0.2)
                             Text("Password")
+                                .modifier(MainFontModifier())
                                 .frame(width: screenWidth * 0.2)
                         }
                         VStack(alignment: .trailing, spacing: screenHeight * 0.01) {
                             TextField("", text: $subjectID)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(width: screenWidth * 0.7)
+                                .modifier(MainFontModifier())
                                 .padding()
                             SecureField("", text: $password)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(width: screenWidth * 0.7)
+                                .modifier(MainFontModifier())
                                 .padding()
                         }
                     }
@@ -43,11 +47,11 @@ struct ContentView: View {
                             path.append(ScreenNames.home)
                         } label: {
                             Text("Login")
-                                .padding()
-                                .frame(width: screenWidth * 0.4, height: screenWidth * 0.1)
-                                .background(Color.blue)
-                                .foregroundColor(Color.white)
-                                .clipShape(Capsule())
+                                .modifier(
+                                    NextButtonModifier(
+                                        screenWidth: screenWidth,
+                                        screenHeight: screenHeight)
+                                )
                         }
                     }
                 }
@@ -69,6 +73,18 @@ struct ContentView: View {
             .onAppear {
                 screenWidth = geometry.size.width
                 screenHeight = geometry.size.height
+
+                // GlobalのSCREEN_SCALEをここで定義
+                // 対応端末
+                // --iPad--
+                // iPad Pro 12.9 inch(6gen) 2048 * 2732 (1024/1322)
+                // iPad Air 10.9 inch(5gen) 1640 * 2360 (820/1136)
+                // --iPhone--
+                // iPhone 14 Pro Max 1290 * 2796 (430/839)
+                // iPhone 14         1170 * 2532 (390/763) ←ここの高さ763を基準とする。SCREEN_SCALE = 1.0
+                SCREEN_SCALE = screenHeight / 763
+                print("SCREEN SCALE:\(SCREEN_SCALE)")
+
             }
             .onChange(of: geometry.size) { newSize in
                 screenWidth = newSize.width

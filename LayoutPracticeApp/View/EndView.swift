@@ -22,12 +22,12 @@ struct EndView: View {
                 path = [ScreenNames.home]
                 
             } label: {
-                Text("back to Home")
+                Text("Back Home")
                     .modifier(
                         NextButtonModifier(
                             screenWidth: screenWidth,
-                            screenHeight: screenHeight))
-                    
+                            screenHeight: screenHeight)
+                    )
             }
         }
     }
@@ -46,15 +46,15 @@ struct ResultView: View {
     var body: some View {
         VStack {
             Text("回答結果")
-                .font(.title)
+                .modifier(TitleFontModifier())
                 .padding()
 
             Text("Correct Answers: \(correctAnswers)")
-                .font(.headline)
+                .modifier(HeadlineFontModifier())
                 .padding()
 
             Text("Incorrect Answers: \(totalQuestions - correctAnswers)")
-                .font(.headline)
+                .modifier(HeadlineFontModifier())
                 .padding()
 
             Spacer()
@@ -65,6 +65,7 @@ struct ResultView: View {
 
 private struct Preview: View {
     @State var path = [ScreenNames.end]
+    // TODO: GeometryReaderでスクリーンの大きさを使用したい。
     @State var screenWidth: CGFloat = 800
     @State var screenHeight: CGFloat = 1000
 

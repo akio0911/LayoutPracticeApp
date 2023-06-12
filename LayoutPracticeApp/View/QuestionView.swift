@@ -46,7 +46,7 @@ struct QuestionView: View {
         GeometryReader { geometry in
             VStack {
                 Text("計算問題")
-                    .font(.largeTitle)
+                    .modifier(HeadlineFontModifier())
                     .padding()
 
                 ScrollView {
@@ -78,22 +78,18 @@ struct QuestionView: View {
 
                 Button(action: {
                     // TODO: 動作・仕組みを理解する
-                    // Perform any action after submitting answers, e.g., show results
                     let correctAnswers = selectedAnswers.compactMap { $0 }.filter { $0 == "2" }.count
                     let incorrectAnswers = questions.count - correctAnswers
                     let resultText = "Correct Answers: \(correctAnswers)\nIncorrect Answers: \(incorrectAnswers)"
 
-                    // Show the result in the next view or perform any other action
-                    // For demonstration, printing the result
-                    print(resultText)
-                    // Go to next page
                     path.append(ScreenNames.end)
                 }) {
                     Text("Submit")
                         .modifier(
                             NextButtonModifier(
                                 screenWidth: screenWidth,
-                                screenHeight: screenHeight))
+                                screenHeight: screenHeight)
+                        )
                 }
                 .padding()
             }
@@ -140,6 +136,7 @@ struct RadioButton: View {
 
 private struct Preview: View {
     @State var path = [ScreenNames.question]
+    // TODO: GeometryReaderでスクリーンの大きさを使用したい。
     @State var screenWidth: CGFloat = 800
     @State var screenHeight: CGFloat = 1000
     

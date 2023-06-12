@@ -9,28 +9,43 @@ import SwiftUI
 
 struct QuestionView: View {
     @Binding var path: [ScreenNames]
+    @Binding var screenWidth: CGFloat
+    @Binding var screenHeight: CGFloat
 
     // Math Questions
     let questions: [String] = [
         "1 + 1 = ?",
         "2 * 3 = ?",
         "4 - 2 = ?",
-        // ... Add more questions here
+        "1 + 1 = ?",
+        "2 * 3 = ?",
+        "4 - 2 = ?",
+        "1 + 1 = ?",
+        "2 * 3 = ?",
+        "4 - 2 = ?",
+        "1 + 1 = ?",
     ]
 
     let options: [[String]] = [
         ["2", "3", "4", "5"],
         ["2", "3", "6", "9"],
         ["1", "2", "3", "4"],
-        // ... Add options for each question here
+        ["2", "3", "4", "5"],
+        ["2", "3", "6", "9"],
+        ["1", "2", "3", "4"],
+        ["2", "3", "4", "5"],
+        ["2", "3", "6", "9"],
+        ["1", "2", "3", "4"],
+        ["2", "3", "4", "5"]
     ]
 
+    // TODO: 動作・仕組みを理解する
     @State private var selectedAnswers: [String?] = Array(repeating: nil, count: 10)
 
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("■問題　１０問")
+                Text("計算問題")
                     .font(.largeTitle)
                     .padding()
 
@@ -62,6 +77,7 @@ struct QuestionView: View {
                 Spacer()
 
                 Button(action: {
+                    // TODO: 動作・仕組みを理解する
                     // Perform any action after submitting answers, e.g., show results
                     let correctAnswers = selectedAnswers.compactMap { $0 }.filter { $0 == "2" }.count
                     let incorrectAnswers = questions.count - correctAnswers
@@ -76,8 +92,8 @@ struct QuestionView: View {
                     Text("Submit")
                         .modifier(
                             NextButtonModifier(
-                                screenWidth: geometry.size.width,
-                                screenHeight: geometry.size.height))
+                                screenWidth: screenWidth,
+                                screenHeight: screenHeight))
                 }
                 .padding()
             }
@@ -86,6 +102,7 @@ struct QuestionView: View {
         }
     }
 
+    // TODO: 動作・仕組みを理解する
     private func radioButtonSelected(id: Int, groupId: Int) {
         selectedAnswers[groupId] = options[groupId][id]
     }
@@ -101,9 +118,10 @@ struct RadioButton: View {
 
     var body: some View {
         Button(action: {
+            // TODO: 動作・仕組みを理解する
             self.callback(self.id, self.groupId)
         }) {
-            HStack {
+            HStack(alignment: .center, spacing: 20) {
                 Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
                     .resizable()
                     .frame(width: 20, height: 20)
@@ -122,8 +140,11 @@ struct RadioButton: View {
 
 private struct Preview: View {
     @State var path = [ScreenNames.question]
+    @State var screenWidth: CGFloat = 800
+    @State var screenHeight: CGFloat = 1000
+    
     var body: some View {
-        QuestionView(path: $path)
+        QuestionView(path: $path, screenWidth: $screenWidth, screenHeight: $screenHeight)
     }
 }
 

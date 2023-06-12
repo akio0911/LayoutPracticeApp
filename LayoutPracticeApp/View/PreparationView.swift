@@ -9,16 +9,23 @@ import SwiftUI
 
 struct PreparationView: View {
     @Binding var path: [ScreenNames]
+    @Binding var screenWidth: CGFloat
+    @Binding var screenHeight: CGFloat
 
     var body: some View {
         GeometryReader { geometry in
-            VStack (spacing: geometry.size.height * 0.6) {
+            VStack (spacing: screenHeight * 0.05) {
                 VStack (spacing: 0) {
                     Text("この数学力診断アプリでは、")
                         .font(.title)
                     Text("計算問題を10問、解いてもらいます。")
                         .font(.title)
                 }
+                Image("note")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: screenWidth * 0.6)
+
                 Button {
                     path.append(ScreenNames.question)
                 } label: {
@@ -26,8 +33,8 @@ struct PreparationView: View {
                         .font(.title)
                         .modifier(
                             NextButtonModifier(
-                                screenWidth: geometry.size.width,
-                                screenHeight: geometry.size.height))
+                                screenWidth: screenWidth,
+                                screenHeight: screenHeight))
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -37,8 +44,11 @@ struct PreparationView: View {
 
 private struct Preview: View {
     @State var path = [ScreenNames.preparation]
+    @State var screenWidth: CGFloat = 800
+    @State var screenHeight: CGFloat = 1000
+    
     var body: some View {
-        PreparationView(path: $path)
+        PreparationView(path: $path, screenWidth: $screenWidth, screenHeight: $screenHeight)
     }
 }
 

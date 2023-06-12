@@ -6,3 +6,5 @@
 //
 
 import Foundation
+
+// TODO: QuestionViewで扱っている回答結果等をここで扱いたい。

@@ -9,18 +9,29 @@ import SwiftUI
 
 struct EndView: View {
     @Binding var path: [ScreenNames]
+    @Binding var screenWidth: CGFloat
+    @Binding var screenHeight: CGFloat
+    // TODO: 動作・仕組みを理解する
     @State private var selectedAnswers: [String?] = Array(repeating: nil, count: 10)
 
     var body: some View {
         VStack (spacing: 0) {
+            // TODO: 動作・仕組みを理解して、正答数を適切に表示させる
             ResultView(correctAnswers: calculateCorrectAnswers(), totalQuestions: selectedAnswers.count)
             Button {
-                path.append(ScreenNames.home)
+                path = [ScreenNames.home]
+                
             } label: {
                 Text("back to Home")
+                    .modifier(
+                        NextButtonModifier(
+                            screenWidth: screenWidth,
+                            screenHeight: screenHeight))
+                    
             }
         }
     }
+    // TODO: 動作・仕組みを理解する
     private func calculateCorrectAnswers() -> Int {
         let correctAnswers = selectedAnswers.compactMap { $0 }.filter { $0 == "2" }.count
         return correctAnswers
@@ -54,8 +65,11 @@ struct ResultView: View {
 
 private struct Preview: View {
     @State var path = [ScreenNames.end]
+    @State var screenWidth: CGFloat = 800
+    @State var screenHeight: CGFloat = 1000
+
     var body: some View {
-        EndView(path: $path)
+        EndView(path: $path, screenWidth: $screenWidth, screenHeight: $screenHeight)
     }
 }
 
